@@ -47,8 +47,16 @@ This function initiates the main program, calls the calulator function, calculat
 displays results, and asks if the user wants to use the calculator again.
 '''
 def main():
-    # ask user for how many number they want to input into calculator
-    num_loops = int(input("How many numbers would you like to enter? "))
+    num_loops = None
+    # while num_loops is null, loop runs indefinitely until user inputs positive integer
+    while num_loops is None:
+        # ask user for how many number they want to input into calculator
+        num_loops = int(input("How many numbers would you like to enter? "))
+        # ensure the user inputs a positive value
+        if num_loops <= 0:
+            print("The number of inputs must be a positive number!\n")
+            num_loops = None
+            
     # get the counts and sum from calculator function
     pos_count, neg_count, sum = calculator(num_loops)
     # calculate average
@@ -70,6 +78,7 @@ def main():
         if repeat == "yes" or repeat == "Yes":
             print("\n")
             main() # repeat main function
+            break
         # if user replies 'no'...
         elif repeat == "no" or repeat == "No":
             print("\nThank you for using the Positive Negative Calculator!") # display closing statement
