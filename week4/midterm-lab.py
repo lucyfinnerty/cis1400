@@ -47,10 +47,10 @@ This function initiates the main program, calls the calulator function, calculat
 displays results, and asks if the user wants to use the calculator again.
 '''
 def main():
-    num_loops = None
+    num_loops = None # the number of numbers user wants to input (number of loops)
     # while num_loops is null, loop runs indefinitely until user inputs positive integer
     while num_loops is None:
-        # ask user for how many number they want to input into calculator
+        # ask user for how many numbers they want to input into calculator
         num_loops = int(input("How many numbers would you like to enter? "))
         # ensure the user inputs a positive value
         if num_loops <= 0:
