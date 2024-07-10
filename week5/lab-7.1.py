@@ -12,14 +12,25 @@ Date: 7/8/24
 numbers_list = []
 # variable that ensures user can only input 5 numbers
 count = 5
+# variable that tells user which number out of 5 they must enter
+count2 = 1
 
+print("Welcome to the Number Analysis Program\nPlease input five numbers!")
 # while count does not equal 0, user will be asked to input a number
 while count != 0:
-    num = int(input("Please input five numbers: "))
-    # number will be be added to end of list
-    numbers_list.append(num)
-    # decrement count so loop can end once count = 0
-    count -= 1
+    num = input(f"{count2}. ")
+    # if user does not enter a number (empty space), display message and user asked again
+    if num == "":
+        print("Please enter a valid integer!")
+    else: # user's input is valid
+        # cast input as an integer
+        num = int(num)
+        # number will be be added to end of list
+        numbers_list.append(num)
+        # decrement count so loop can end once count = 0
+        count -= 1
+        # increment count2 so user know which number they are on
+        count2 += 1
 
 # function that finds the smallest number in numbers_list
 def min_num():
@@ -61,7 +72,7 @@ def average(sum):
     return sum / len(numbers_list)
 
 # display results
-print("Your list of numbers:", numbers_list)
+print("\nYour list of numbers:", numbers_list)
 total_sum = total()
 print("The minimum number is", min_num())
 print("The maximum number is", max_num())
