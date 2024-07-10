@@ -34,9 +34,9 @@ def distance():
     # iterate through list
     for num in numbers_list:
         # distance is set to the result of avg subtracted from num
-        dist = num - avg
+        dist = round(num - avg)
         # display distance result
-        print(f"The distance between {num} and the average {avg:.2f} is {dist:.2f}.")
+        print(f"The distance between {num} and the average {avg} is {dist}.")
 
 # function that adds up all of the numbers in numbers_list
 def total():
@@ -51,11 +51,11 @@ def total():
 # function that calculates the average of the numbers in numbers_list
 def average(sum):
     # divide sum by the length of the numbers_list
-    return sum / len(numbers_list)
+    return round(sum / len(numbers_list))
 
 # calculate total
 total_sum = total()
 # display numbers_list and average using total_sum
-print(f"\nThe numbers you entered are {numbers_list} and the average is {average(total_sum):.2f}.\n")
+print(f"\nThe numbers you entered are {numbers_list} and the average is {average(total_sum)}.\n")
 # call distance funtion for calculations
 distance()
