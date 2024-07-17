@@ -16,34 +16,36 @@ def greeting():
     print("\nWelcome", name, "to the Fast Freight Shipping Company shipping rate program.\nThis program is designed to take your package(s) weight in pounds and\ncalculate how much it will cost to ship them based on the following rates.\n\n2 pounds or less = $1.10 per pound\nOver 2 pounds but no more that 6 pounds = $2.20 per pound\nOver 6 pounds but no more than 10 pounds = $3.70 per pound\nOver 10 pounds = $3.80 per pound\n")
 
 # function packageCharge accepts weight as an argument and return the charges
-def packageCharge():
-    # initialize total cost 
+def packageCharge(weight):
+    # determine rate based on weight
+    if weight <= 2:
+        rate = 1.10
+    elif weight > 2 and weight <= 6:
+        rate = 2.20
+    elif weight > 6 and weight <= 10:
+        rate = 3.70
+    else: # weight > 10
+        rate = 3.80
+
+    # calculate and return cost for the package
+    cost = weight * rate
+    return cost
+
+# the driver function that initiates the main program 
+def main():
+    # calls greeting and packageCharge functions
+    greeting()
     total_cost = 0.0
-
-    # loop runs indefinitely until valid input is recieved by user, then action is taken and loop breaks
     while True:
-    # prompt user to enter package weight
-        weight = eval(input("\nPlease enter your package weight in pounds: "))
-
-        # determine rate based on weight
-        if weight <= 2:
-            rate = 1.10
-        elif weight > 2 and weight <= 6:
-            rate = 2.20
-        elif weight > 6 and weight <= 10:
-            rate = 3.70
-        elif weight > 10:
-            rate = 3.80
-
-        # calculate cost for current package
-        cost = weight * rate
-        # add current package cost to total cost
+        # prompt user to enter package weight
+        weight = float(input("\nPlease enter your package weight in pounds: "))
+        cost = packageCharge(weight)
         total_cost += cost
 
         # display cost of current package
         print(f"Your cost is: ${cost:.2f}")
 
-        # loop runs indefinitely until valid input is recieved by user, then action is taken and loop breaks
+        # loop runs indefinitely until valid input is received by user, then action is taken and loop breaks
         while True:
             # give user the option to add another package
             more_packages = input("Would you like to ship another package <y/n> ?: ")
@@ -56,12 +58,6 @@ def packageCharge():
         if more_packages.lower() == 'n':
             print(f"Thank you for your purchase, your total for today is ${total_cost:.2f}\nGoodbye!") # Exit loop if user does not want to ship more packages
             break # program ends
-
-# the driver function that initiates the main program 
-def main():
-    # calls greeting and packageCharge functions
-    greeting()
-    packageCharge()
 
 # run the main function
 if __name__ == "__main__":
