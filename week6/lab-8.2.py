@@ -24,6 +24,7 @@ else: # path is an existing file
     # parse the ticket prices from the lines (skip header line)
     # split each line by spaces, takes the second element (the price), and converts it to a float
     ticket_prices = [float(line.split()[1]) for line in lines[1:] if line.strip()]
+    fp.close()
 
     # if list of ticket prices is not empty
     if ticket_prices:
@@ -45,6 +46,7 @@ else: # path is an existing file
         fp2.write(f"Average Ticket Price is ${avg_price:.2f}.\n")
         fp2.write("\nThank you for using our ticket system!\n")
         fp2.write("\n*******************************************\n")
+        fp2.close()
         # display success message to console to let user know it worked
         print("Report generated successfully. Please check output.txt.")
     else: # list of ticket prices is empty, display following message
