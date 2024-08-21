@@ -1,0 +1,10 @@
+Square, 16.00
+Cube, 54.00
+Circle, 58.09
+Cube, 54.00
+Square, 16.00
+Circle, 58.09
+Cube, 54.00
+Circle, 58.09
+Square, 16.00
+Cube, 54.00
